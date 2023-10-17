@@ -38,16 +38,14 @@
           />
         </div>
       </div>
-      <a routerLink="/user">
-        <button
-          class="mt-2 btn bg-primary-subtle border-0 text-dark w-100"
-          type="submit"
-          [disabled]="checkForm"
-          (click)="onLogIn()"
-        >
-          Submit
-        </button>
-      </a>
+      <button
+        class="mt-2 btn bg-primary-subtle border-0 text-dark w-100"
+        type="submit"
+        [disabled]="checkForm"
+        (click)="onLogIn()"
+      >
+        Submit
+      </button>
     </form>
   </div>
 </div>
