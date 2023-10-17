@@ -1,0 +1,16 @@
+.header-container {
+  width: 100%;
+}
+
+* {
+  color: #181818;
+  text-decoration: none;
+}
+
+.active {
+  color: #101010;
+  background-color: #adb5bd;
+  border-radius: 1rem;
+  text-decoration: underline;
+}
+  
