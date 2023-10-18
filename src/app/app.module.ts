@@ -12,6 +12,9 @@ import { AuthGuard } from './auth-guard.service';
 import { AuthService } from './auth.service';
 import { LoginService } from './login/login.service';
 import { CanDeactivateGuard } from './users/can-deactivate-guard.service';
+import { UserListComponent } from './users/user-list/user-list.component';
+import { UserService } from './users/users.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -20,9 +23,22 @@ import { CanDeactivateGuard } from './users/can-deactivate-guard.service';
     UserDetailComponent,
     ErrorPageComponent,
     LoginComponent,
+    UserListComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule],
-  providers: [AuthService, AuthGuard, LoginService, CanDeactivateGuard],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+  ],
+  providers: [
+    AuthService,
+    AuthGuard,
+    LoginService,
+    UserService,
+    CanDeactivateGuard,
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

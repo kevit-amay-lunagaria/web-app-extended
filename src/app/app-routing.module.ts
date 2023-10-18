@@ -6,6 +6,7 @@ import { LoginComponent } from './login/login.component';
 import { AuthGuard } from './auth-guard.service';
 import { UserDetailComponent } from './users/user-detail/user-detail.component';
 import { CanDeactivateGuard } from './users/can-deactivate-guard.service';
+import { UserListComponent } from './users/user-list/user-list.component';
 
 const routes: Routes = [
   {
@@ -15,14 +16,21 @@ const routes: Routes = [
   {
     path: 'user',
     component: UsersComponent,
-    canActivate: [AuthGuard],
+    //canActivate: [AuthGuard],
     canDeactivate: [CanDeactivateGuard],
   },
   {
-    path: 'user-detail',
-    component: UserDetailComponent,
-    canActivate: [AuthGuard],
+    path: 'user-list',
+    component: UserListComponent,
+    //canActivate: [AuthGuard],
+    //children: [],
   },
+  {
+    path: 'user-detail/:id',
+    component: UserDetailComponent,
+    //canActivate: [AuthGuard],
+  },
+
   {
     path: '',
     redirectTo: 'login',

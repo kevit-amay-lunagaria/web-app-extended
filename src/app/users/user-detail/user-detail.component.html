@@ -1,13 +1,4 @@
-<div class="container">
-  <div class="d-flex justify-content-end">
-    <button
-      type="button"
-      class="btn bg-info-subtle text-dark float-end"
-      (click)="toEdit()"
-    >
-      Edit
-    </button>
-  </div>
+<div class="container" *ngIf="!closeDetail">
   <div class="row d-flex justify-content-center col-lg-10 m-auto text-center">
     <table class="mt-5">
       <tr>
@@ -59,5 +50,22 @@
         <td class="text">{{ summary }}</td>
       </tr>
     </table>
+  </div>
+
+  <div class="d-flex justify-content-around mt-5">
+    <button
+      type="button"
+      class="btn bg-secondary-subtle text-dark float-end"
+      routerLink="/user-list"
+    >
+      Go Back
+    </button>
+    <button
+      type="button"
+      class="btn bg-info-subtle text-dark float-end"
+      (click)="toEdit()"
+    >
+      Edit
+    </button>
   </div>
 </div>

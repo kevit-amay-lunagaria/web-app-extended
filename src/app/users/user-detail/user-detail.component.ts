@@ -1,22 +1,21 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { ActivatedRoute, NavigationStart, Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { LoginService } from 'src/app/login/login.service';
-
-//export let browserRefresh: boolean = false;
+import { UserService } from '../users.service';
 
 @Component({
-  selector: 'app-edit-user',
+  selector: 'app-user-detail',
   templateUrl: './user-detail.component.html',
   styleUrls: ['./user-detail.component.css'],
 })
 export class UserDetailComponent implements OnInit, OnDestroy {
   hobbies: string[] = [];
-  userData: any = [];
+  userData: any;
   showPercentSymbol: boolean = false;
   allowEdit: boolean = false;
+  closeDetail: boolean = false;
   private subscription: Subscription | undefined;
-  formEdited: boolean = true;
+  formEdited: boolean = false;
   name: string = '';
   dob: any;
   email: string = '';
@@ -27,61 +26,73 @@ export class UserDetailComponent implements OnInit, OnDestroy {
   gender: string = '';
   address: string = '';
   summary: string = '';
+  userIndex: number = 0;
 
   constructor(
-    private loginService: LoginService,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private userService: UserService
   ) {}
 
   ngOnInit() {
-    this.route.queryParams.subscribe((qParams: any) => {
-      this.formEdited = qParams.edited;
+    this.route.params.subscribe((param: any) => {
+      this.userIndex = param.id;
     });
+    this.getUserData();
+    this.closeDetail = true;
+  }
 
-    if (this.formEdited) {
-      this.subscription = this.loginService
-        .updatedUserData()
-        .subscribe((data: any) => {
-          this.userData = data[0];
-          this.hobbies = data[1];
-        });
-    } else {
-      this.subscription = this.loginService
-        .showUserData()
-        .subscribe((data: any) => {
-          this.userData = data[0];
-          this.hobbies = data[1];
-        });
-    }
+  getUserData() {
+    this.userService.getUserDetail().subscribe((res: any) => {
+      this.userData = res[this.userIndex];
+      if (this.userData === undefined) {
+        alert('user not found :(');
+        alert('Redirecting back');
+        this.router.navigate(['/user-list']);
+      } else {
+        this.closeDetail = false;
+        this.assignData(this.userData);
+      }
+    });
+  }
 
+  assignData(userData: any) {
     if (
-      this.userData.education.percentage.toString().indexOf('.') === 2 ||
-      (this.userData.education.percentage.toString().length <= 2 &&
-        this.userData.education.percentage.toString().indexOf('0') != 0)
+      userData.education.percentage.toString().indexOf('.') === 2 ||
+      (userData.education.percentage.toString().length <= 2 &&
+        userData.education.percentage.toString().indexOf('0') != 0)
     ) {
       this.showPercentSymbol = true;
     } else {
       this.showPercentSymbol = false;
     }
+    this.name = userData.name;
+    this.dob = userData.dob;
+    this.email = userData.email;
+    this.phonenumber = userData.phonenumber;
+    this.institute = userData.education.institute;
+    this.educationtype = userData.education.educationtype;
+    this.percent = userData.education.percentage;
+    this.gender = userData.gender;
+    this.address = userData.address;
+    this.summary = userData.summary;
 
-    this.name = this.userData.name;
-    this.dob = this.userData.dob;
-    this.email = this.userData.email;
-    this.phonenumber = this.userData.phonenumber;
-    this.institute = this.userData.education.institute;
-    this.educationtype = this.userData.education.educationtype;
-    this.percent = this.userData.education.percentage;
-    this.gender = this.userData.gender;
-    this.address = this.userData.address;
-    this.summary = this.userData.summary;
-    this.userData = [];
+    if (userData.Cricket) {
+      this.hobbies.push('Cricket');
+    }
+    if (userData.Gaming) {
+      this.hobbies.push('Gaming');
+    }
+    if (userData.Reading) {
+      this.hobbies.push('Reading');
+    }
   }
 
   toEdit() {
     this.allowEdit = true;
     const queryParams = {
       edit: this.allowEdit,
+      id: this.userIndex,
     };
 
     this.router.navigate(['/user'], { queryParams: queryParams });

@@ -1,0 +1,76 @@
+{
+  "users": [
+    {
+      "name": "new45",
+      "dob": "2023-10-20",
+      "email": "lad@gmail.com",
+      "phonenumber": "1234567890",
+      "education": {
+        "institute": "DU",
+        "educationtype": "HSC",
+        "percentage": 78.56
+      },
+      "Cricket": false,
+      "Gaming": false,
+      "Reading": false,
+      "gender": "Male",
+      "address": "",
+      "summary": "",
+      "id": 1
+    },
+    {
+      "name": "new",
+      "dob": "1212-12-12",
+      "email": "new@new.com",
+      "phonenumber": "1234567890",
+      "education": {
+        "institute": "DU",
+        "educationtype": "hdvs",
+        "percentage": 45.56
+      },
+      "Cricket": false,
+      "Gaming": false,
+      "Reading": false,
+      "gender": "Male",
+      "address": "",
+      "summary": "",
+      "id": 2
+    },
+    {
+      "name": "newcheck",
+      "dob": "2010-10-10",
+      "email": "vgerngre@gmail.com",
+      "phonenumber": "1234567890",
+      "education": {
+        "institute": "DU",
+        "educationtype": "hdvs",
+        "percentage": 87.89
+      },
+      "Cricket": false,
+      "Gaming": true,
+      "Reading": true,
+      "gender": "Male",
+      "address": "",
+      "summary": "",
+      "id": 3
+    },
+    {
+      "name": "newcheck34",
+      "dob": "2023-10-14",
+      "email": "test@test.com",
+      "phonenumber": "1234567890",
+      "education": {
+        "institute": "DU",
+        "educationtype": "hdvs",
+        "percentage": 67.87
+      },
+      "Cricket": true,
+      "Gaming": false,
+      "Reading": false,
+      "gender": "Male",
+      "address": "",
+      "summary": "",
+      "id": 4
+    }
+  ]
+}

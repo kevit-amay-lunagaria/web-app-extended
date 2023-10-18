@@ -236,7 +236,6 @@
           class="mt-1"
           [formControlName]="hobby.name"
           [value]="hobby.name"
-          (change)="onHobbyChange($event, hobby.name, i)"
           [checked]="hobbies[i].selected"
         />
         {{ hobby.name }}
@@ -278,6 +277,7 @@
             formControlName="address"
             id="address"
             placeholder="Your address"
+            maxlength="50"
           ></textarea>
         </div>
         <div class="col-6">
@@ -288,6 +288,7 @@
             formControlName="summary"
             id="summary"
             placeholder="Something about you"
+            maxlength="50"
           ></textarea>
         </div>
       </div>
