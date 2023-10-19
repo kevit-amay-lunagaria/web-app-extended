@@ -43,17 +43,19 @@ export class UserDetailComponent implements OnInit, OnDestroy {
   }
 
   getUserData() {
-    this.userService.getUserDetail().subscribe((res: any) => {
-      this.userData = res[this.userIndex];
-      if (this.userData === undefined) {
-        alert('user not found :(');
-        alert('Redirecting back');
-        this.router.navigate(['/user-list']);
-      } else {
-        this.closeDetail = false;
-        this.assignData(this.userData);
-      }
-    });
+    this.subscription = this.userService
+      .getUserDetail()
+      .subscribe((res: any) => {
+        this.userData = res[this.userIndex];
+        if (this.userData === undefined) {
+          alert('user not found :(');
+          alert('Redirecting back');
+          this.router.navigate(['/user-list']);
+        } else {
+          this.closeDetail = false;
+          this.assignData(this.userData);
+        }
+      });
   }
 
   assignData(userData: any) {

@@ -1,5 +1,11 @@
+import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
+
+@Injectable()
 export class AuthService {
   loggedIn = false;
+
+  constructor(private router: Router) {}
 
   isAuthenticated() {
     const promise = new Promise((resolve, reject) => {
@@ -15,5 +21,6 @@ export class AuthService {
 
   logOut() {
     this.loggedIn = false;
+    this.router.navigate(['/']);
   }
 }

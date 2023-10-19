@@ -9,7 +9,11 @@
         <th>Email</th>
         <th></th>
       </tr>
-      <tr *ngFor="let user of users; let i = index" (click)="getUserDetail()">
+      <tr
+        *ngFor="let user of users; let i = index"
+        (click)="getUserDetail()"
+        style="cursor: pointer"
+      >
         <td [routerLink]="['/user-detail', i]">{{ i + 1 }}</td>
         <td [routerLink]="['/user-detail', i]">{{ user.name }}</td>
         <td [routerLink]="['/user-detail', i]">{{ user.email }}</td>
@@ -47,6 +51,3 @@
   <div></div>
   <div></div>
 </div>
-<!-- <td [routerLink]="['/user-detail', user.id]">{{ i + 1 }}</td>
-<td [routerLink]="['/user-detail', user.id]">{{ user.name }}</td>
-<td [routerLink]="['/user-detail', user.id]">{{ user.email }}</td> -->

@@ -16,21 +16,19 @@ const routes: Routes = [
   {
     path: 'user',
     component: UsersComponent,
-    //canActivate: [AuthGuard],
+    canActivate: [AuthGuard],
     canDeactivate: [CanDeactivateGuard],
   },
   {
     path: 'user-list',
     component: UserListComponent,
-    //canActivate: [AuthGuard],
-    //children: [],
+    canActivate: [AuthGuard],
   },
   {
     path: 'user-detail/:id',
     component: UserDetailComponent,
-    //canActivate: [AuthGuard],
+    canActivate: [AuthGuard],
   },
-
   {
     path: '',
     redirectTo: 'login',

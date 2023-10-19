@@ -1,12 +1,6 @@
 import { Component, HostListener, OnDestroy, OnInit } from '@angular/core';
 import { LoginService } from '../login/login.service';
-import {
-  FormArray,
-  FormBuilder,
-  FormControl,
-  FormGroup,
-  Validators,
-} from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { CanComponentDeactivate } from './can-deactivate-guard.service';
 import { Observable, Subscription } from 'rxjs';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -21,9 +15,6 @@ import { UserService } from './users.service';
 export class UsersComponent
   implements OnInit, CanComponentDeactivate, OnDestroy
 {
-  userName: string = '';
-  userPassword: string = '';
-  userArray: string[] = [];
   genders: string[] = ['Male', 'Female'];
   hobbies: any[] = [
     { name: 'Cricket' },
@@ -41,17 +32,12 @@ export class UsersComponent
   userId: number = 0;
 
   constructor(
-    private loginService: LoginService,
     private userService: UserService,
     private router: Router,
     private route: ActivatedRoute
   ) {}
 
   ngOnInit(): void {
-    this.userArray = this.loginService.showNewUser();
-    this.userName = this.userArray[0];
-    this.userPassword = this.userArray[1];
-
     this.route.queryParams.subscribe((qParams: any) => {
       if (qParams.edit !== undefined) {
         this.allowEdit = qParams.edit;
@@ -69,7 +55,6 @@ export class UsersComponent
     let institute = '';
     let educationtype = '';
     let percentage = '';
-    let hobbies = [];
     let address = '';
     let summary = '';
     let gender = '';
@@ -123,7 +108,6 @@ export class UsersComponent
     let institute = '';
     let educationtype = '';
     let percentage = '';
-    let hobbies = [];
     let address = '';
     let summary = '';
     let gender = '';
@@ -138,7 +122,6 @@ export class UsersComponent
     institute = dataFromEditForm.education.institute;
     educationtype = dataFromEditForm.education.educationtype;
     percentage = dataFromEditForm.education.percentage;
-    hobbies = [];
     gender = dataFromEditForm.gender;
     address = dataFromEditForm.address;
     summary = dataFromEditForm.summary;
@@ -232,5 +215,7 @@ export class UsersComponent
     }
   }
 
-  ngOnDestroy(): void {}
+  ngOnDestroy(): void {
+    this.userSub?.unsubscribe();
+  }
 }

@@ -1,5 +1,4 @@
 import { Component, Injectable, ViewChild } from '@angular/core';
-import { NgForm } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { AuthService } from '../auth.service';
 import { LoginService } from './login.service';
@@ -31,13 +30,13 @@ export class LoginComponent {
 
   onLogIn() {
     if (this.loginForm?.valid) {
-      this.loginService.getNewUser(
+      this.loginService.logUserIn(
         this.loginForm?.value.username,
         this.loginForm?.value.userpassword
       );
       alert('You have logged in!!');
       this.authService.logIn();
-      this.router.navigate(['/user'], { relativeTo: this.route });
+      this.router.navigate(['/user-list'], { relativeTo: this.route });
     } else {
       alert('Please submit valid details!!');
     }

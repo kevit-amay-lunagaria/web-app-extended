@@ -11,11 +11,7 @@ export class UserListComponent implements OnInit {
   users: any;
   contentLoaded: boolean = false;
 
-  constructor(
-    private router: Router,
-    private userService: UserService,
-    private route: ActivatedRoute
-  ) {}
+  constructor(private userService: UserService) {}
 
   ngOnInit(): void {
     this.fetchUsers();

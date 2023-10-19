@@ -1,4 +1,4 @@
-import { Injectable, inject } from '@angular/core';
+import { Injectable } from '@angular/core';
 import {
   CanActivate,
   ActivatedRouteSnapshot,
@@ -27,19 +27,3 @@ export class AuthGuard implements CanActivate {
     });
   }
 }
-
-// export const canActivate: CanActivateFn = (
-//   route: ActivatedRouteSnapshot,
-//   state: RouterStateSnapshot
-// ): Observable<boolean> | Promise<boolean> | boolean {
-//   return inject(AuthService)
-//     .isAuthenticated()
-//     .then((authenticated: any) => {
-//       if (authenticated) {
-//         return true;
-//       } else {
-//         inject(Router).navigate(['/']);
-//         return false;
-//       }
-//     });
-// }

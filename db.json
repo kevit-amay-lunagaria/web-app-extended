@@ -1,24 +1,6 @@
 {
   "users": [
     {
-      "name": "new45",
-      "dob": "2023-10-20",
-      "email": "lad@gmail.com",
-      "phonenumber": "1234567890",
-      "education": {
-        "institute": "DU",
-        "educationtype": "HSC",
-        "percentage": 78.56
-      },
-      "Cricket": false,
-      "Gaming": false,
-      "Reading": false,
-      "gender": "Male",
-      "address": "",
-      "summary": "",
-      "id": 1
-    },
-    {
       "name": "new",
       "dob": "1212-12-12",
       "email": "new@new.com",
@@ -37,7 +19,7 @@
       "id": 2
     },
     {
-      "name": "newcheck",
+      "name": "newcheck1",
       "dob": "2010-10-10",
       "email": "vgerngre@gmail.com",
       "phonenumber": "1234567890",
@@ -66,11 +48,29 @@
       },
       "Cricket": true,
       "Gaming": false,
-      "Reading": false,
+      "Reading": true,
       "gender": "Male",
       "address": "",
       "summary": "",
       "id": 4
+    },
+    {
+      "name": "newcheck34new",
+      "dob": "2023-10-06",
+      "email": "new12@new.com",
+      "phonenumber": "1234567890",
+      "education": {
+        "institute": "DU",
+        "educationtype": "HSC",
+        "percentage": 78.98
+      },
+      "Cricket": false,
+      "Gaming": true,
+      "Reading": false,
+      "gender": "Male",
+      "address": "",
+      "summary": "",
+      "id": 5
     }
   ]
 }

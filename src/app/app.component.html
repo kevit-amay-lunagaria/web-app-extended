@@ -1,11 +1,11 @@
 <div class="header-container container">
   <div class="row">
     <div
-      class="col-xs-12 col-sm-10 col-lg-12 col-md-12 col-sm-offset-1 col-md-offset-2 d-flex align-items-center"
+      class="col-xs-12 col-sm-10 col-lg-12 col-md-12 col-sm-offset-1 col-md-offset-2 d-flex align-items-center justify-content-between"
       style="height: 60px"
     >
       <ul class="nav nav-tabs border-0">
-        <li class="ms-3" role="presentation">
+        <li class="ms-3" role="presentation" *ngIf="!show">
           <a
             class="py-2 px-3"
             [routerLinkActive]="'active'"
@@ -16,20 +16,6 @@
           </a>
         </li>
         <li class="mx-3" role="presentation">
-          <a class="py-2 px-3" routerLinkActive="active" routerLink="/user">
-            User Form
-          </a>
-        </li>
-        <!-- <li class="" role="presentation">
-          <a
-            class="py-2 px-3"
-            routerLinkActive="active"
-            routerLink="/user-detail"
-          >
-            User Detail
-          </a>
-        </li> -->
-        <li class="" role="presentation">
           <a
             class="py-2 px-3"
             routerLinkActive="active"
@@ -38,7 +24,20 @@
             Users List
           </a>
         </li>
+        <li class="" role="presentation">
+          <a class="py-2 px-3" routerLinkActive="active" routerLink="/user">
+            User Form
+          </a>
+        </li>
       </ul>
+      <button
+        class="btn bg-danger-subtle"
+        type="button"
+        *ngIf="show"
+        (click)="onLogOut()"
+      >
+        LogOut
+      </button>
     </div>
   </div>
   <div class="row">
